@@ -305,11 +305,9 @@ You now have JobTrack Pro running locally on your machine!
 
 **Key Features Available:**
 - ✅ ATS Resume Analyzer
-- ✅ AI Resume & Cover Letter Generator (based on YOUR resume)
 - ✅ Job Application Tracker with Kanban board
 - ✅ Resume Manager with versioning
 - ✅ Analytics Dashboard
-- ✅ Chrome Extension for auto-filling applications
 - ✅ Per-job resume tracking and download
 
 
