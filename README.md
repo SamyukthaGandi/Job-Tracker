@@ -72,3 +72,4 @@ export default defineConfig([
 ])
 ```
 "# Job-Tracker" 
+"# Job_application_tracker" 

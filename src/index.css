@@ -1,0 +1,224 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 199 89% 48%;
+    --primary-foreground: 222 47% 6%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 199 89% 48%;
+    --accent-foreground: 222 47% 6%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 199 89% 48%;
+    --radius: 0.5rem;
+    
+    /* Status Colors */
+    --status-applied: 45 93% 47%;
+    --status-interview: 160 84% 39%;
+    --status-offer: 142 71% 45%;
+    --status-rejected: 0 84% 60%;
+    --status-ghosted: 215 20% 50%;
+    --status-withdrawn: 215 20% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
+/* Status Badge Colors */
+.status-applied {
+  @apply bg-yellow-500/20 text-yellow-400 border-yellow-500/30;
+}
+
+.status-interview {
+  @apply bg-emerald-500/20 text-emerald-400 border-emerald-500/30;
+}
+
+.status-offer {
+  @apply bg-green-500/20 text-green-400 border-green-500/30;
+}
+
+.status-rejected {
+  @apply bg-red-500/20 text-red-400 border-red-500/30;
+}
+
+.status-ghosted {
+  @apply bg-slate-500/20 text-slate-400 border-slate-500/30;
+}
+
+.status-withdrawn {
+  @apply bg-gray-500/20 text-gray-400 border-gray-500/30;
+}
+
+/* ATS Score Colors */
+.ats-score-excellent {
+  @apply text-emerald-400;
+}
+
+.ats-score-good {
+  @apply text-blue-400;
+}
+
+.ats-score-average {
+  @apply text-yellow-400;
+}
+
+.ats-score-poor {
+  @apply text-orange-400;
+}
+
+.ats-score-critical {
+  @apply text-red-400;
+}
+
+/* Kanban Board Styles */
+.kanban-column {
+  @apply min-h-[400px] bg-secondary/30 rounded-lg p-4;
+}
+
+.kanban-card {
+  @apply bg-card border border-border rounded-lg p-4 mb-3 cursor-pointer 
+         hover:border-primary/50 transition-all duration-200
+         hover:shadow-lg hover:shadow-primary/5;
+}
+
+/* Glass Effect */
+.glass {
+  @apply bg-background/80 backdrop-blur-xl border border-border/50;
+}
+
+/* Gradient Text */
+.gradient-text {
+  @apply bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent;
+}
+
+/* Animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(6, 182, 212, 0.4);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Progress Ring */
+.progress-ring-circle {
+  transition: stroke-dashoffset 0.5s ease-in-out;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+/* Card Hover Effect */
+.card-hover {
+  @apply transition-all duration-300;
+}
+
+.card-hover:hover {
+  @apply -translate-y-1 shadow-xl;
+}
+
+/* Input Focus */
+input:focus, textarea:focus {
+  @apply ring-2 ring-primary/50 outline-none;
+}
+
+/* Button Press Effect */
+.btn-press:active {
+  @apply scale-95;
+}
+
+/* Tooltip */
+.tooltip {
+  @apply invisible opacity-0 absolute z-50 px-2 py-1 text-xs 
+         bg-popover text-popover-foreground rounded shadow-lg
+         transition-opacity duration-200;
+}
+
+.has-tooltip:hover .tooltip {
+  @apply visible opacity-100;
+}
+
+/* Drag and Drop */
+.dragging {
+  @apply opacity-50 rotate-2;
+}
+
+.drop-target {
+  @apply bg-primary/10 border-primary/30 border-2 border-dashed;
+}
+
+/* Chart Styles */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: hsl(var(--border));
+}
+
+.recharts-text {
+  fill: hsl(var(--muted-foreground));
+}
+
+/* Modal Backdrop */
+.modal-backdrop {
+  @apply fixed inset-0 bg-black/60 backdrop-blur-sm z-50;
+}
+
+/* Sidebar */
+.sidebar-item {
+  @apply flex items-center gap-3 px-4 py-3 rounded-lg text-muted-foreground
+         hover:bg-secondary hover:text-foreground transition-colors duration-200;
+}
+
+.sidebar-item.active {
+  @apply bg-primary/10 text-primary border-r-2 border-primary;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .kanban-column {
+    @apply min-h-[200px];
+  }
+}
